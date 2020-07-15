@@ -1,2 +1,7 @@
 # React-Hooks-Samples
-Created with CodeSandbox
+
+Different samples to by using React Hooks 
+
+useState
+useReducer
+
