@@ -1,8 +1,8 @@
 {
-  "name": "react-hooks-samples",
+  "name": "@aj-7885/react-hooks-samples",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "Creating different sample with react hooks",
+  "keywords": ["react","hooks","sample"],
   "main": "src/index.js",
   "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "dependencies": {
