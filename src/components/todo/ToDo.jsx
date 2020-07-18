@@ -6,12 +6,20 @@ const ACTION = {
   TOGGLE_TODO: "toggle_todo"
 };
 function reducer(todo, action) {
-  console.log(action.payload, todo);
+  // console.log(action.payload, todo);
   switch (action.type) {
     case ACTION.ADD_TODO:
       return [...todo, newTodo(action.payload.name)];
     case ACTION.DEL_TODO:
       return todo.filter(item => item.id !== action.payload.id);
+    case ACTION.TOGGLE_TODO:
+      return todo.map(item => {
+        if (item.id === action.payload.id) {
+          console.log("1", item);
+          return { ...item, isDone: !item.isDone };
+        }
+        return item;
+      });
     default:
       return todo;
   }
@@ -49,9 +57,15 @@ export default () => {
 
       {state.length > 0 &&
         state.map((item, key) => (
-          <li key={key} style={{ color: "red" }}>
+          <li key={key} style={{ color: item.isDone ? "red" : "green" }}>
             {item.name}
-            <button>Done</button>
+            <button
+              onClick={() =>
+                dispatch({ type: ACTION.TOGGLE_TODO, payload: { id: item.id } })
+              }
+            >
+              Done
+            </button>
             <button
               onClick={() =>
                 dispatch({ type: ACTION.DEL_TODO, payload: { id: item.id } })
